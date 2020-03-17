@@ -56,6 +56,8 @@ function! s:generate_url(mode)
     " Change `:` to `/` (in case of ssh remote).
     let l:remote = system('git config remote.origin.url')
     let l:remote = substitute(l:remote, 'git@\|git:', 'https://', 'g')
+    let l:remote = substitute(l:remote, 'me@gh:', 'https://github.com/williamboman/', 'g')
+    let l:remote = substitute(l:remote, 'gh:', 'https://github.com/', 'g')
     let l:remote = substitute(l:remote, '\.git.$\|\n', '', '')
     let l:remote = substitute(l:remote, ':\([^/]\)', '/\1', 'g')
 
